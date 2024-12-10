@@ -1,0 +1,42 @@
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+
+public class FigmaAppClone extends Application {
+
+    @Override
+    public void start(Stage primaryStage) {
+        // Create a StackPane layout to hold your UI components
+        StackPane root = new StackPane();
+        
+        // Load an image from Figma assets folder
+        Image image = new Image("file:assets/your-figma-image.png"); // Make sure the path is correct
+        ImageView imageView = new ImageView(image);
+
+        // Create a button that simulates the click functionality
+        Button btn = new Button("Click me to go to next screen");
+        btn.setOnAction(e -> {
+            // Handle the button click, e.g., change the screen or update the UI
+            System.out.println("Button clicked! Now transitioning...");
+            // Example of updating UI content:
+            btn.setText("Next Screen");
+        });
+
+        // Add the image and button to the layout
+        root.getChildren().addAll(imageView, btn);
+
+        // Create a Scene and set the layout
+        Scene scene = new Scene(root, 800, 600);  // Customize the size
+        primaryStage.setTitle("Figma Clone App");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
