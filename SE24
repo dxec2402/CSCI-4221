@@ -1,9 +1,12 @@
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class FigmaAppClone extends Application {
@@ -24,6 +27,8 @@ public class FigmaAppClone extends Application {
             System.out.println("Button clicked! Now transitioning...");
             // Example of updating UI content:
             btn.setText("Next Screen");
+            // Transition to a new screen with additional components
+            showNextScreen(primaryStage);
         });
 
         // Add the image and button to the layout
@@ -34,6 +39,31 @@ public class FigmaAppClone extends Application {
         primaryStage.setTitle("Figma Clone App");
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+
+    private void showNextScreen(Stage primaryStage) {
+        // Create a new layout for the next screen
+        VBox nextScreenLayout = new VBox(10); // 10 is the spacing between elements
+
+        // Add a label and a text field
+        Label label = new Label("Enter your name:");
+        TextField textField = new TextField();
+
+        // Add a button to go back to the previous screen
+        Button backButton = new Button("Back");
+        backButton.setOnAction(e -> {
+            // Go back to the previous screen
+            start(primaryStage);
+        });
+
+        // Add components to the layout
+        nextScreenLayout.getChildren().addAll(label, textField, backButton);
+
+        // Create a new scene with the new layout
+        Scene nextScene = new Scene(nextScreenLayout, 800, 600);
+
+        // Set the new scene on the primary stage
+        primaryStage.setScene(nextScene);
     }
 
     public static void main(String[] args) {
